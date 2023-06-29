@@ -1,18 +1,48 @@
-import android.content.Intent
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.SignInActivity
-import kotlinx.android.synthetic.main.siginin.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Button
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
-class YourActivity : AppCompatActivity() {
+@Composable
+fun YourScreen(navController: NavController) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+        val destinationId = R.id.signin
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.your_layout_file)
+    )
 
-        yourButton.setOnClickListener {
-            val intent = Intent(this, SignInActivity::class.java)
-            startActivity(intent)
-        }
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = "start") {
+        composable("start") { StartScreen(navController) }
+        composable("signin") { SignInScreen() }
+        // Add more destinations as needed
     }
-}
+
+    {
+
+        Button(
+            onClick = { navController.navigate("signin") },
+            modifier = Modifier.padding(top = 56.dp)
+        ) {
+            Text(
+                text = "Continue",
+                fontWeight = FontWeight.Bold
+            )
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowRight,
+                contentDescription = null
+            )
+        }
+
