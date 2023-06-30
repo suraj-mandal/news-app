@@ -73,6 +73,7 @@
             android:paddingStart="8dp"
             android:paddingEnd="4dp"
             android:text="Continue"
+            android:fontFamily="@font/satoshi"
             android:textColor="@android:color/white"
             android:textSize="15.29dp"
             android:textStyle="bold"
