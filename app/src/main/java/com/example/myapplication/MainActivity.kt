@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         val btn : Button
         btn = findViewById(R.id.btn_splash_screen)
         btn.setOnClickListener{
-            startActivity(Intent(this, signup::class.java))
+            startActivity(Intent(this, SignupActivity::class.java))
         }
     }
 }
