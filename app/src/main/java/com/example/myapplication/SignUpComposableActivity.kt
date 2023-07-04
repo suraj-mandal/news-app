@@ -48,6 +48,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
+import com.example.myapplication.composables.CustomInputField
+
 class SignUpComposableActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,14 +74,14 @@ fun SignupComposable() {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 32.dp),
+                    .padding(top = 16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
 
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.logo),
                     modifier = Modifier
-                        .size(160.dp)
+                        .size(120.dp)
                         .clip(CircleShape)
                     ,
                     contentDescription = "Logo")
@@ -90,7 +92,7 @@ fun SignupComposable() {
                     .padding(horizontal = 8.dp),
                 text = "News Express",
                 textAlign = TextAlign.Center,
-                fontSize = 28.sp,
+                fontSize = 26.sp,
                 style = TextStyle(
                     fontFamily = FontFamily(Font(R.font.poppins_medium)),
                 )
@@ -100,7 +102,7 @@ fun SignupComposable() {
                     .fillMaxWidth()
                     .padding(horizontal = 8.dp),
                 textAlign = TextAlign.Center,
-                fontSize = 14.sp,
+                fontSize = 12.sp,
                 style = TextStyle(
                     fontFamily = FontFamily(Font(R.font.poppins_regular)),
                     color = Color.DarkGray
@@ -188,6 +190,39 @@ fun SignupComposable() {
                 Spacer(modifier = Modifier.width(5.dp))
                 CustomInputField("Please enter your password")
             }
+
+            // Normal sign in button
+
+            Button(
+                onClick = { /*TODO: Sign in Normally */ },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 25.dp, end = 25.dp, top = 20.dp)
+                    .align(Alignment.CenterHorizontally)
+                ,
+                colors = ButtonDefaults.outlinedButtonColors(
+                    containerColor = Color(0xFFF5F5F5)
+                ),
+
+
+//                colors = ButtonDefaults.buttonColors(
+//                    backgroundColor = Color.Transparent
+//                )
+            ) {
+
+                Text(
+                    text = "Sign in",
+                    style = TextStyle(
+                        fontFamily = FontFamily(Font(R.font.poppins_medium)),
+                        color = Color.DarkGray,
+                        fontSize = 12.sp
+                    ),
+                    modifier = Modifier
+                        .padding(top = 2.dp, start = 8.dp)
+                )
+            }
+
+            /* --------- or --------- */
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -221,25 +256,26 @@ fun SignupComposable() {
             }
             // This section will be containing the google button
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { /*TODO: Sign in with Google */ },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 25.dp, vertical = 12.dp)
                     .align(Alignment.CenterHorizontally)
                 ,
                 colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = Color.Transparent
+                    containerColor = Color(0xFFF5F5F5)
                 ),
-                border = BorderStroke(width = 1.dp, color = Color.Gray),
+
 
 //                colors = ButtonDefaults.buttonColors(
 //                    backgroundColor = Color.Transparent
 //                )
             ) {
-                Icon(
-                    imageVector = Icons.Filled.Facebook,
-                    contentDescription = "Facebook icon",
-                    tint = Color.DarkGray
+                Image(
+                    painter = painterResource(id = R.drawable.google_icon),
+                    contentDescription = "Google Icon",
+                    modifier = Modifier
+                        .size(18.dp)
                 )
                 Text(
                     text = "Sign in with ",
@@ -266,49 +302,3 @@ fun SignupComposable() {
     }
 }
 
-@Composable
-private fun CustomInputField(placeholder: String = "Enter Your Name") {
-    var value by remember {
-        mutableStateOf("")
-    }
-
-    BasicTextField(
-        value = value,
-        onValueChange = { newText ->
-            value = newText
-        },
-        textStyle = TextStyle(
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Medium,
-            color = Color.DarkGray
-        ),
-        decorationBox = { innerTextField ->
-            Box(
-                modifier = Modifier
-                    .padding(start = 15.dp, end = 25.dp) // margin left and right
-                    .fillMaxWidth()
-                    .border(
-                        width = 1.dp,
-                        color = Color(0x37373733),
-                        shape = RoundedCornerShape(50)
-                    )
-                    .padding(horizontal = 20.dp, vertical = 12.dp),
-                contentAlignment = Alignment.CenterStart
-            // inner padding
-            ) {
-                if (value.isEmpty()) {
-                    Text(
-                        text = placeholder,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Normal,
-                        color = Color(0x37373733),
-                        style = TextStyle(
-                            fontFamily = FontFamily(Font(R.font.poppins_regular))
-                        ),
-                    )
-                }
-                innerTextField()
-            }
-        }
-    )
-}
