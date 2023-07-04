@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import android.graphics.drawable.Icon
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,12 +7,10 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -24,12 +21,13 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material.icons.filled.Facebook
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -62,7 +60,6 @@ class SignUpComposableActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
 fun SignupComposable() {
@@ -165,7 +162,7 @@ fun SignupComposable() {
 ////                        .clip(RoundedCornerShape(50))
 //                    shape = RoundedCornerShape(50)
 //                )
-                MyUI("Please enter your email address")
+                CustomInputField("Please enter your email address")
             }
             Row(
                 modifier = Modifier
@@ -189,14 +186,88 @@ fun SignupComposable() {
                     .padding(vertical = 4.dp)
             ) {
                 Spacer(modifier = Modifier.width(5.dp))
-                MyUI("Please enter your password")
+                CustomInputField("Please enter your password")
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Spacer(modifier =
+                Modifier
+                    .weight(1f)
+                    .height(1.dp)
+                    .padding(start = 25.dp)
+                    .background(color = Color.LightGray)
+                )
+                Text(
+                    text = "or",
+                    modifier =  Modifier
+                        .padding(horizontal = 12.dp),
+                    style = TextStyle(
+                        fontFamily = FontFamily(Font(R.font.poppins_light)),
+                        color = Color.LightGray,
+                        fontSize = 10.sp
+                    )
+                )
+                Spacer(modifier =
+                Modifier
+                    .weight(1f)
+                    .height(1.dp)
+                    .padding(end = 25.dp)
+                    .background(color = Color.LightGray)
+                )
+            }
+            // This section will be containing the google button
+            Button(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 25.dp, vertical = 12.dp)
+                    .align(Alignment.CenterHorizontally)
+                ,
+                colors = ButtonDefaults.outlinedButtonColors(
+                    containerColor = Color.Transparent
+                ),
+                border = BorderStroke(width = 1.dp, color = Color.Gray),
+
+//                colors = ButtonDefaults.buttonColors(
+//                    backgroundColor = Color.Transparent
+//                )
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Facebook,
+                    contentDescription = "Facebook icon",
+                    tint = Color.DarkGray
+                )
+                Text(
+                    text = "Sign in with ",
+                    style = TextStyle(
+                        fontFamily = FontFamily(Font(R.font.poppins_medium)),
+                        color = Color.DarkGray,
+                        fontSize = 12.sp
+                    ),
+                    modifier = Modifier
+                        .padding(top = 2.dp, start = 8.dp)
+                )
+                Text(
+                    text = "Google",
+                    style = TextStyle(
+                        fontFamily = FontFamily(Font(R.font.poppins_bold)),
+                        color = Color.DarkGray,
+                        fontSize = 12.sp
+                    ),
+                    modifier = Modifier
+                        .padding(top = 2.dp)
+                )
             }
         }
     }
 }
 
 @Composable
-private fun MyUI(placeholder: String = "Enter Your Name") {
+private fun CustomInputField(placeholder: String = "Enter Your Name") {
     var value by remember {
         mutableStateOf("")
     }
@@ -221,7 +292,9 @@ private fun MyUI(placeholder: String = "Enter Your Name") {
                         color = Color(0x37373733),
                         shape = RoundedCornerShape(50)
                     )
-                    .padding(horizontal = 20.dp, vertical = 12.dp), // inner padding
+                    .padding(horizontal = 20.dp, vertical = 12.dp),
+                contentAlignment = Alignment.CenterStart
+            // inner padding
             ) {
                 if (value.isEmpty()) {
                     Text(
