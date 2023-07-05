@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "860996271788",
+    "project_id": "news-express-f4aae",
+    "storage_bucket": "news-express-f4aae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860996271788:android:9dfc2bc7fe23d03542e909",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860996271788-ng58usq55pp5h8qr7rhs509gictrb8sp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIvNK9fJiETcezX3_QMfzICX5ZIJ6-DvQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860996271788-ng58usq55pp5h8qr7rhs509gictrb8sp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

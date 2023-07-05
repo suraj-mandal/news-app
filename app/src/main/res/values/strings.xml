@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="title_activity_sign_up_composable">SignUpComposableActivity</string>
+    <string name="default_web_client_id">860996271788-m39g89tuq5ak51fmcom4r1g5cqrnkinn.apps.googleusercontent.com</string>
 </resources>

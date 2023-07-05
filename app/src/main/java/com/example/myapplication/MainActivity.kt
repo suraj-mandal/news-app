@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.myapplication.presentation.sign_in.SignInComposableActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         val btn : Button
         btn = findViewById(R.id.btn_splash_screen)
         btn.setOnClickListener{
-            startActivity(Intent(this, SignUpComposableActivity::class.java))
+            startActivity(Intent(this, SignInComposableActivity::class.java))
         }
     }
 }
